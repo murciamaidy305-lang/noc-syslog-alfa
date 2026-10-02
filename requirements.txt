@@ -3,7 +3,7 @@ fastapi==0.109.2
 # Servidor web para que FastAPI funcione
 uvicorn==0.27.1
 # Herramienta para conectarnos a la base de datos (Fase 3)
-sqlalchemy==2.0.25
+sqlalchemy==2.0.29
 # Lector de variables de entorno (para seguridad)
 python-dotenv==1.0.1
 # Plantillas visuales (para el Dashboard en la Fase 5)

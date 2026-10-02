@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOC Syslog Alfa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1 class="mb-4 text-primary">NOC Syslog Inteligente</h1>
+        
+        <div class="card shadow">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0">Inventario de Dispositivos (Dashboard)</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>IP</th>
+                            <th>Marca / Modelo</th>
+                            <th>Estado</th>
+                            <th>Acciones</th> <!-- NUEVA COLUMNA -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for equipo in dispositivos %}
+                        <tr>
+                            <td>{{ equipo.id }}</td>
+                            <td><strong>{{ equipo.nombre }}</strong></td>
+                            <td>{{ equipo.ip }}</td>
+                            <td>{{ equipo.marca }} {{ equipo.modelo }}</td>
+                            <td><span class="badge bg-success">{{ equipo.estado }}</span></td>
+                            <!-- NUEVO BOTÓN DE CONFIGURACIÓN -->
+                            <td>
+                                <a href="/dispositivos/{{ equipo.id }}/config" target="_blank" class="btn btn-sm btn-outline-info">
+                                    Ver Config
+                                </a>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="6" class="text-center">No hay dispositivos registrados aún.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
